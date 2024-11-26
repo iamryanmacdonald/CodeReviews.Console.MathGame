@@ -1,4 +1,5 @@
 ﻿var date = DateTime.UtcNow;
+var games = new List<string>();
 var name = GetName();
 
 Menu(name);
@@ -24,6 +25,7 @@ void Menu(string name)
         Console.Clear();
         Console.WriteLine("""
                           What game would you like to play today? Choose from the options below:
+                          V - View Previous Games
                           A - Addition
                           S - Subtraction
                           M - Multiplication
@@ -51,6 +53,9 @@ void Menu(string name)
                 break;
             case "s":
                 SubtractionGame("Subtraction game");
+                break;
+            case "v":
+                GetGames();
                 break;
             default:
                 Console.WriteLine("Invalid input.");
@@ -97,6 +102,8 @@ void AdditionGame(string message)
             Console.ReadLine();
         }
     }
+
+    AddToHistory(score, "Addition");
 }
 
 void DivisionGame(string message)
@@ -133,6 +140,8 @@ void DivisionGame(string message)
             Console.ReadLine();
         }
     }
+
+    AddToHistory(score, "Division");
 }
 
 void MultiplicationGame(string message)
@@ -173,6 +182,8 @@ void MultiplicationGame(string message)
             Console.ReadLine();
         }
     }
+
+    AddToHistory(score, "Multiplication");
 }
 
 void SubtractionGame(string message)
@@ -213,6 +224,13 @@ void SubtractionGame(string message)
             Console.ReadLine();
         }
     }
+
+    AddToHistory(score, "Subtraction");
+}
+
+void AddToHistory(int gameScore, string gameType)
+{
+    games.Add($"{DateTime.Now} - {gameType}: {gameScore} pts");
 }
 
 int[] GetDivisionNumbers()
@@ -233,4 +251,15 @@ int[] GetDivisionNumbers()
     result[1] = secondNumber;
 
     return result;
+}
+
+void GetGames()
+{
+    Console.Clear();
+    Console.WriteLine("Games History");
+    Console.WriteLine("----------------------------------------");
+    foreach (var game in games) Console.WriteLine(game);
+    Console.WriteLine("----------------------------------------\n");
+    Console.WriteLine("Press any key to go back to the main menu.");
+    Console.ReadLine();
 }
