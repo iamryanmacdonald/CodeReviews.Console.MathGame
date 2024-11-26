@@ -6,11 +6,12 @@ internal static class Helpers
 {
     private static readonly List<Game> Games = [];
 
-    internal static void AddToHistory(int gameScore, GameType gameType)
+    internal static void AddToHistory(int gameScore, GameType gameType, TimeSpan duration)
     {
         Games.Add(new Game
         {
             Date = DateTime.Now,
+            Duration = duration,
             Score = gameScore,
             Type = gameType
         });
@@ -54,6 +55,7 @@ internal static class Helpers
     {
         var gamesToPrint = Games
             .OrderByDescending(x => x.Score)
+            .ThenBy(x => x.Duration.TotalSeconds)
             .ToList();
 
         Console.Clear();
@@ -61,7 +63,8 @@ internal static class Helpers
         Console.WriteLine("----------------------------------------");
         if (gamesToPrint.Count > 0)
             foreach (var game in gamesToPrint)
-                Console.WriteLine($"{game.Date} - {game.Type}: {game.Score} pts");
+                Console.WriteLine(
+                    $"{game.Date} - {game.Type}: {game.Score} pts ({game.Duration.TotalSeconds:N2} seconds)");
         else
             Console.WriteLine("No games found.");
         Console.WriteLine("----------------------------------------\n");

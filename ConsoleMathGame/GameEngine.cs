@@ -1,4 +1,5 @@
-﻿using ConsoleMathGame.Models;
+﻿using System.Diagnostics;
+using ConsoleMathGame.Models;
 
 namespace ConsoleMathGame;
 
@@ -27,6 +28,8 @@ internal static class GameEngine
                 gameOperator = "-";
                 break;
         }
+
+        var watch = Stopwatch.StartNew();
 
         for (var i = 0; i < 5; i++)
         {
@@ -75,18 +78,20 @@ internal static class GameEngine
             {
                 Console.WriteLine("Your answer was correct! Press any key for the next question.");
                 score++;
-                Console.ReadLine();
             }
             else
             {
                 Console.WriteLine("Your answer was incorrect. Press any key for the next question.");
-                Console.ReadLine();
             }
+
+            Console.ReadLine();
         }
 
-        Helpers.AddToHistory(score, gameType);
+        watch.Stop();
+
+        Helpers.AddToHistory(score, gameType, watch.Elapsed);
         Console.WriteLine(
-            $"Game over. Your final score is {score}. Press any key to go back to the main menu.");
+            $"Game over. Your final score is {score}. You finished in a total time of {watch.Elapsed.TotalSeconds:N2} seconds. Press any key to go back to the main menu.");
         Console.ReadLine();
     }
 }
