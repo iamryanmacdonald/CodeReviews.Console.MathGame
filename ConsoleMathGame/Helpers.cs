@@ -53,12 +53,17 @@ internal class Helpers
     internal static void PrintGames()
     {
         var gamesToPrint = games
-            .OrderByDescending(x => x.Score);
+            .OrderByDescending(x => x.Score)
+            .ToList();
 
         Console.Clear();
         Console.WriteLine("Games History");
         Console.WriteLine("----------------------------------------");
-        foreach (var game in gamesToPrint) Console.WriteLine($"{game.Date} - {game.Type}: {game.Score} pts");
+        if (gamesToPrint.Count > 0)
+            foreach (var game in gamesToPrint)
+                Console.WriteLine($"{game.Date} - {game.Type}: {game.Score} pts");
+        else
+            Console.WriteLine("No games found.");
         Console.WriteLine("----------------------------------------\n");
         Console.WriteLine("Press any key to go back to the main menu.");
         Console.ReadLine();
