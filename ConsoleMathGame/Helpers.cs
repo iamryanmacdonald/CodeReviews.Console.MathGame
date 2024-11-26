@@ -1,12 +1,19 @@
-﻿namespace ConsoleMathGame;
+﻿using ConsoleMathGame.Models;
+
+namespace ConsoleMathGame;
 
 internal class Helpers
 {
-    private static readonly List<string> games = new();
+    internal static List<Game> games = new();
 
     internal static void AddToHistory(int gameScore, string gameType)
     {
-        games.Add($"{DateTime.Now} - {gameType}: {gameScore} pts");
+        games.Add(new Game
+        {
+            Date = DateTime.Now,
+            Score = gameScore,
+            Type = gameType
+        });
     }
 
     internal static int[] GetDivisionNumbers()
@@ -29,12 +36,12 @@ internal class Helpers
         return result;
     }
 
-    internal static void GetGames()
+    internal static void PrintGames()
     {
         Console.Clear();
         Console.WriteLine("Games History");
         Console.WriteLine("----------------------------------------");
-        foreach (var game in games) Console.WriteLine(game);
+        foreach (var game in games) Console.WriteLine($"{game.Date} - {game.Type}: {game.Score} pts");
         Console.WriteLine("----------------------------------------\n");
         Console.WriteLine("Press any key to go back to the main menu.");
         Console.ReadLine();

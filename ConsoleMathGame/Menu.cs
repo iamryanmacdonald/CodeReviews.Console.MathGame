@@ -48,7 +48,7 @@ internal class Menu
                     engine.SubtractionGame("Subtraction game");
                     break;
                 case "v":
-                    Helpers.GetGames();
+                    Helpers.PrintGames();
                     break;
                 default:
                     Console.WriteLine("Invalid input.");
