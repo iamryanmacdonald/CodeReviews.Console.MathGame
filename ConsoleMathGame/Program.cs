@@ -16,41 +16,48 @@ void Menu(string name)
     Console.WriteLine(
         $"Hello {name}. It's {date}. This is your maths game. It's great that you're working on improving yourself.");
     Console.WriteLine("\n");
-    Console.WriteLine("""
-                      What game would you like to play today? Choose from the options below:
-                      A - Addition
-                      S - Subtraction
-                      M - Multiplication
-                      D - Division
-                      Q - Quit the program
-                      """);
-    Console.WriteLine("----------------------------------------");
 
-    var gameSelection = Console.ReadLine().ToLower().Trim();
+    var isGameOn = true;
 
-    switch (gameSelection)
+    do
     {
-        case "a":
-            AdditionGame("Addition game");
-            break;
-        case "d":
-            DivisionGame("Division game");
-            break;
-        case "m":
-            MultiplicationGame("Multiplication game");
-            break;
-        case "q":
-            Console.WriteLine("Goodbye.");
-            Environment.Exit(1);
-            break;
-        case "s":
-            SubtractionGame("Subtraction game");
-            break;
-        default:
-            Console.WriteLine("Invalid input.");
-            Environment.Exit(1);
-            break;
-    }
+        Console.Clear();
+        Console.WriteLine("""
+                          What game would you like to play today? Choose from the options below:
+                          A - Addition
+                          S - Subtraction
+                          M - Multiplication
+                          D - Division
+                          Q - Quit the program
+                          """);
+        Console.WriteLine("----------------------------------------");
+
+        var gameSelection = Console.ReadLine().ToLower().Trim();
+
+        switch (gameSelection)
+        {
+            case "a":
+                AdditionGame("Addition game");
+                break;
+            case "d":
+                DivisionGame("Division game");
+                break;
+            case "m":
+                MultiplicationGame("Multiplication game");
+                break;
+            case "q":
+                Console.WriteLine("Goodbye.");
+                isGameOn = false;
+                break;
+            case "s":
+                SubtractionGame("Subtraction game");
+                break;
+            default:
+                Console.WriteLine("Invalid input.");
+                Environment.Exit(1);
+                break;
+        }
+    } while (isGameOn);
 }
 
 void AdditionGame(string message)
@@ -85,7 +92,10 @@ void AdditionGame(string message)
         }
 
         if (i == 4)
-            Console.WriteLine($"Game over. Your final score is {score}.");
+        {
+            Console.WriteLine($"Game over. Your final score is {score}. Press any key to go back to the main menu.");
+            Console.ReadLine();
+        }
     }
 }
 
@@ -118,7 +128,10 @@ void DivisionGame(string message)
         }
 
         if (i == 4)
-            Console.WriteLine($"Game over. Your final score is {score}.");
+        {
+            Console.WriteLine($"Game over. Your final score is {score}. Press any key to go back to the main menu.");
+            Console.ReadLine();
+        }
     }
 }
 
@@ -155,7 +168,10 @@ void MultiplicationGame(string message)
         }
 
         if (i == 4)
-            Console.WriteLine($"Game over. Your final score is {score}.");
+        {
+            Console.WriteLine($"Game over. Your final score is {score}. Press any key to go back to the main menu.");
+            Console.ReadLine();
+        }
     }
 }
 
@@ -192,7 +208,10 @@ void SubtractionGame(string message)
         }
 
         if (i == 4)
-            Console.WriteLine($"Game over. Your final score is {score}.");
+        {
+            Console.WriteLine($"Game over. Your final score is {score}. Press any key to go back to the main menu.");
+            Console.ReadLine();
+        }
     }
 }
 
