@@ -1,9 +1,9 @@
-﻿namespace ConsoleMathGame;
+﻿using ConsoleMathGame.Models;
+
+namespace ConsoleMathGame;
 
 internal class Menu
 {
-    private readonly GameEngine _engine = new();
-
     internal void ShowMenu(string name, DateTime date)
     {
         Console.Clear();
@@ -34,20 +34,20 @@ internal class Menu
             switch (gameSelection)
             {
                 case "a":
-                    _engine.AdditionGame("Addition game");
+                    GameEngine.GameLoop(GameType.Addition, "Addition game");
                     break;
                 case "d":
-                    _engine.DivisionGame("Division game");
+                    GameEngine.GameLoop(GameType.Division, "Division game");
                     break;
                 case "m":
-                    _engine.MultiplicationGame("Multiplication game");
+                    GameEngine.GameLoop(GameType.Multiplication, "Multiplication game");
                     break;
                 case "q":
                     Console.WriteLine("Goodbye.");
                     isGameOn = false;
                     break;
                 case "s":
-                    _engine.SubtractionGame("Subtraction game");
+                    GameEngine.GameLoop(GameType.Subtraction, "Subtraction game");
                     break;
                 case "v":
                     Helpers.PrintGames();
