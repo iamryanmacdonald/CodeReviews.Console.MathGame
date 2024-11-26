@@ -2,7 +2,7 @@
 
 internal class Menu
 {
-    private readonly GameEngine engine = new();
+    private readonly GameEngine _engine = new();
 
     internal void ShowMenu(string name, DateTime date)
     {
@@ -34,20 +34,20 @@ internal class Menu
             switch (gameSelection)
             {
                 case "a":
-                    engine.AdditionGame("Addition game");
+                    _engine.AdditionGame("Addition game");
                     break;
                 case "d":
-                    engine.DivisionGame("Division game");
+                    _engine.DivisionGame("Division game");
                     break;
                 case "m":
-                    engine.MultiplicationGame("Multiplication game");
+                    _engine.MultiplicationGame("Multiplication game");
                     break;
                 case "q":
                     Console.WriteLine("Goodbye.");
                     isGameOn = false;
                     break;
                 case "s":
-                    engine.SubtractionGame("Subtraction game");
+                    _engine.SubtractionGame("Subtraction game");
                     break;
                 case "v":
                     Helpers.PrintGames();

@@ -9,16 +9,13 @@ internal class GameEngine
         var random = new Random();
         var score = 0;
 
-        int firstNumber;
-        int secondNumber;
-
         for (var i = 0; i < 5; i++)
         {
             Console.Clear();
             Console.WriteLine(message);
 
-            firstNumber = random.Next(1, 9);
-            secondNumber = random.Next(1, 9);
+            var firstNumber = random.Next(1, 9);
+            var secondNumber = random.Next(1, 9);
 
             Console.WriteLine($"{firstNumber} + {secondNumber}");
             var result = Console.ReadLine();
@@ -94,16 +91,13 @@ internal class GameEngine
         var random = new Random();
         var score = 0;
 
-        int firstNumber;
-        int secondNumber;
-
         for (var i = 0; i < 5; i++)
         {
             Console.Clear();
             Console.WriteLine(message);
 
-            firstNumber = random.Next(1, 9);
-            secondNumber = random.Next(1, 9);
+            var firstNumber = random.Next(1, 9);
+            var secondNumber = random.Next(1, 9);
 
             Console.WriteLine($"{firstNumber} * {secondNumber}");
             var result = Console.ReadLine();
@@ -138,17 +132,13 @@ internal class GameEngine
         var random = new Random();
         var score = 0;
 
-        int firstNumber;
-        int secondNumber;
-
-
         for (var i = 0; i < 5; i++)
         {
             Console.Clear();
             Console.WriteLine(message);
 
-            firstNumber = random.Next(1, 9);
-            secondNumber = random.Next(1, 9);
+            var firstNumber = random.Next(1, 9);
+            var secondNumber = random.Next(1, 9);
 
             Console.WriteLine($"{firstNumber} - {secondNumber}");
             var result = Console.ReadLine();

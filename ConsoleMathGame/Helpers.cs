@@ -2,13 +2,13 @@
 
 namespace ConsoleMathGame;
 
-internal class Helpers
+internal static class Helpers
 {
-    internal static List<Game> games = new();
+    private static readonly List<Game> Games = [];
 
     internal static void AddToHistory(int gameScore, GameType gameType)
     {
-        games.Add(new Game
+        Games.Add(new Game
         {
             Date = DateTime.Now,
             Score = gameScore,
@@ -52,7 +52,7 @@ internal class Helpers
 
     internal static void PrintGames()
     {
-        var gamesToPrint = games
+        var gamesToPrint = Games
             .OrderByDescending(x => x.Score)
             .ToList();
 
